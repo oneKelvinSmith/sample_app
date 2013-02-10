@@ -1,6 +1,16 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
+emacs_colors = {
+  :success => '#5f7f5f',
+  :pending => '#e0cf9f',
+  :failed  => '#bc8383',
+  :default => '#4f4f4f',
+}
+
+notification :libnotify
+notification :emacs, emacs_colors
+
 guard 'rspec', :version => 2, :all_after_pass => false, :cli => '--drb' do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$}) do |m|

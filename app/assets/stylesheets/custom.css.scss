@@ -31,7 +31,7 @@ textarea {
 
 /* typography */
 
-h1, h1, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
 
@@ -56,6 +56,7 @@ p {
   line-height: 1.7em;
 }
 
+
 /* header */
 
 #logo {
@@ -67,7 +68,7 @@ p {
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
-  line-weight: 1;
+  line-height: 1;
   &:hover {
     color: white;
     text-decoration: none;

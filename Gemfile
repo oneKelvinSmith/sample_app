@@ -4,8 +4,6 @@ gem 'rails', '3.2.12'
 gem 'bootstrap-sass', '~> 2.3.0.0'
 gem 'pg', '0.14.1'
 
-# Use pry as an irb replacement
-gem 'pry-rails', group: :development
 
 group :development, :test do
   gem 'rspec-rails', '2.12.2'
@@ -13,6 +11,12 @@ group :development, :test do
   gem 'guard-spork', '1.4.2'
   gem 'spork', '0.9.2'
   gem 'wirble', '0.1.3'
+end
+
+group :development do
+  # Use pry as an irb replacement
+  gem 'pry-rails'
+  gem 'annotate', '>= 2.5.0'
 end
 
 # Gems used only for assets and not required

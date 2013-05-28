@@ -1,59 +1,48 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
-gem 'rails', '3.2.13.rc2'
-gem 'bootstrap-sass', '~> 2.3.0.0'
+gem 'rails', '4.0.0.rc1'
+gem 'bootstrap-sass', '2.3.1.0'
 gem 'bcrypt-ruby', '3.0.1'
-gem 'pg', '0.14.1'
 
 group :development, :test do
-  gem 'rspec-rails', '2.12.2'
-  gem 'guard-rspec', '2.4.0'
-  gem 'guard-spork', '1.4.2'
-  gem 'spork', '0.9.2'
-  gem 'wirble', '0.1.3'
+  gem 'pg', '0.15.1'
+  gem 'rspec-rails', '2.13.1'
+  gem 'guard-rspec', '2.5.0'
+  gem 'spork-rails', github: 'railstutorial/spork-rails'
+  gem 'guard-spork', '1.5.0'
+  gem 'childprocess', '0.3.6'
 end
-
-group :development do
-  # Use pry as an irb replacement
-  gem 'pry-rails'
-  gem 'annotate', '>= 2.5.0'
-end
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '3.2.6'
-  gem 'coffee-rails', '~> 3.2.2'
-  gem 'uglifier', '>= 1.2.3'
-end
-
-gem 'jquery-rails', '2.0.2'
 
 group :test do
-  gem 'capybara', '~> 1.1.4'
-  gem 'rb-inotify', '~> 0.9.0'
-  gem 'libnotify', '0.5.9'
-  gem 'factory_girl_rails', '4.1.0'
+  gem 'selenium-webdriver', '2.0.0'
+  gem 'capybara', '2.1.0'
+
+  # Uncomment these lines on OS X.
+  gem 'rb-fsevent', '0.9.3', :require => false
+  gem 'growl', '1.0.3'
+
+  # Uncomment these lines on Linux.
+  # gem 'rb-inotify', '0.9.0'
+  # gem 'libnotify', '0.8.0'
+
+  # Uncomment these lines on Windows.
+  # gem 'rb-fchange', '0.0.6'
+  # gem 'rb-notifu', '0.0.4'
+  # gem 'win32console', '1.3.2'
+
+  gem 'factory_girl_rails', '4.2.1'
+  gem 'cucumber-rails', '1.3.0', :require => false
+  gem 'database_cleaner', '~> 1.0.0.RC1'
 end
 
+gem 'sass-rails', '4.0.0.rc1'
+gem 'uglifier', '2.1.1'
+gem 'coffee-rails', '4.0.0'
+gem 'jquery-rails', '2.2.1'
+gem 'turbolinks', '1.1.1'
+gem 'jbuilder', '1.0.2'
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+group :doc do
+  gem 'sdoc', '0.3.20', require: false
+end

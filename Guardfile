@@ -1,15 +1,24 @@
 # More info at https://github.com/guard/guard#readme
 
 # emacs colour customization
+
+DARK_GREEN   = '#67930F'
+DARK_YELLOW  = '#968B26'
+DARK_RED     = '#A20C41'
+LIGHT_GREEN  = '#C1F161'
+LIGHT_YELLOW = '#F3EA98'
+LIGHT_RED    = '#FC5C94'
+DEFAULT      = '#49483E'
+
 emacs_colors = {
-  :success => '#5f7f5f',
-  :pending => '#e0cf9f',
-  :failed  => '#bc8383',
-  :default => '#4f4f4f',
+  :success => DARK_GREEN,
+  :pending => DARK_YELLOW,
+  :failed  => DARK_RED,
+  :default => DEFAULT,
 }
 
 # notification :libnotify
-notification growl
+notification :growl_notify
 notification :emacs, emacs_colors
 
 require 'active_support/inflector'

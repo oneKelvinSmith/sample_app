@@ -18,7 +18,7 @@ emacs_colors = {
 }
 
 # notification :libnotify
-notification :growl_notify
+# notification :growl_notify
 notification :emacs, emacs_colors
 
 require 'active_support/inflector'

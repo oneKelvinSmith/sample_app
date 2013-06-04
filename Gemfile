@@ -5,6 +5,7 @@ gem 'rails', '4.0.0.rc1'
 gem 'bootstrap-sass', '2.3.1.0'
 gem 'bcrypt-ruby', '3.0.1'
 
+
 group :development, :test do
   gem 'pg', '0.15.1'
   gem 'rspec-rails', '2.13.1'
@@ -12,6 +13,8 @@ group :development, :test do
   gem 'spork-rails', github: 'railstutorial/spork-rails'
   gem 'guard-spork', '1.5.0'
   gem 'childprocess', '0.3.6'
+
+  gem 'pry-rails' # replace irb with pry in rails console.
 end
 
 group :test do
@@ -20,7 +23,7 @@ group :test do
 
   # Uncomment these lines on OS X.
   gem 'rb-fsevent', '0.9.3', :require => false
-  gem 'growl', '1.0.3'
+  # gem 'growl', "~> 1.0.3", :require => false
 
   # Uncomment these lines on Linux.
   # gem 'rb-inotify', '0.9.0'

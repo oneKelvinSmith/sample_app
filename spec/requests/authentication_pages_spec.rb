@@ -9,6 +9,10 @@ describe "Authentication" do
 
     it { should have_content('Sign in') }
     it { should have_title('Sign in') }
+    it { should have_link('Sign in') }
+    it { should_not have_link('Profile') }
+    it { should_not have_link('Settings') }
+    it { should_not have_link('Sign out') }
   end
 
   describe "signin" do
@@ -38,9 +42,22 @@ describe "Authentication" do
       it { should have_link('Sign out',    href: signout_path) }
       it { should_not have_link('Sign in', href: signin_path) }
 
+      describe "submitting a POST request to the Users#create action" do
+        before { get new_user_path }
+        specify { expect(response).to redirect_to(root_path) }
+      end
+
+      describe "submitting a GET request to the Users#new action" do
+        before { get signup_path }
+        specify { expect(response).to redirect_to(root_path) }
+      end
+
       describe "followed by signout" do
         before { click_link "Sign out" }
         it { should have_link('Sign in') }
+        it { should_not have_link('Profile') }
+        it { should_not have_link('Settings') }
+        it { should_not have_link('Sign out') }
       end
     end
   end
@@ -62,6 +79,17 @@ describe "Authentication" do
 
           it "should render the desired protected page" do
             expect(page).to have_title('Edit user')
+          end
+
+          describe "when signing in again" do
+            before do
+              delete signout_path
+              sign_in user
+            end
+
+            it "should render the default (profile) page" do
+              expect(page).to have_title(user.name)
+            end
           end
         end
       end
@@ -106,6 +134,19 @@ describe "Authentication" do
       describe "submitting a DELETE request to the Users#destroy action" do
         before { delete user_path(user) }
         specify { expect(response).to redirect_to(root_path) }
+      end
+    end
+
+
+    describe "as admin user" do
+      let(:admin) { FactoryGirl.create(:admin) }
+
+      before { sign_in admin }
+
+      describe "submitting a DELETE request to the Users#destroy action" do
+        it "should not delete the admin user" do
+          expect { delete user_path(admin) }.not_to change(User, :count)
+        end
       end
     end
   end

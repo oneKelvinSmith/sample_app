@@ -96,7 +96,7 @@ describe "UserPages" do
 
         it { should have_link('Sign out') }
         it { should have_title(user.name) }
-        it  {should have_success_message('Welcome')}
+        it { should have_success_message('Welcome')}
       end
     end
   end

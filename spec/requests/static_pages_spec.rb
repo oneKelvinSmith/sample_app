@@ -26,11 +26,31 @@ describe "Static pages" do
         visit root_path
       end
 
+      it "should render the user's info" do
+        expect(page).to have_selector('h1', text: user.name)
+        expect(page).to have_link('view my profile', user_path(user))
+      end
+
       it "should render the user's feed" do
         user.feed.each do |item|
           expect(page).to have_selector("li##{item.id}", text: item.content)
+          expect(page).to have_link('delete', href: micropost_path(item))
         end
       end
+
+      # describe "micropost count" do
+      #   it { should have_content('2 microposts') }
+      #   it { should_not have_content('1 microposts') }
+
+      #   describe "after destroying a micropost" do
+      #     before do
+      #       user.microposts.delete(user.microposts.first)
+      #       visit root_path
+      #     end
+      #     it { should have_content('1 micropost') }
+      #     it { should_not have_content('microposts') }
+      #   end
+      # end
     end
   end
 

@@ -1,7 +1,4 @@
-# More info at https://github.com/guard/guard#readme
-
 # emacs colour customization
-
 DARK_GREEN   = '#67930F'
 DARK_YELLOW  = '#968B26'
 DARK_RED     = '#A20C41'
@@ -17,8 +14,6 @@ emacs_colors = {
   :default => DEFAULT,
 }
 
-# notification :libnotify
-# notification :growl_notify
 notification :emacs, emacs_colors
 
 require 'active_support/inflector'

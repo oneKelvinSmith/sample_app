@@ -16,3 +16,6 @@
 
 # Ignore -e file
 -e
+
+# Ignore sass cache
+/.sass-cache

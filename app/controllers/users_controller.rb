@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user,
-                only: [:index, :edit, :update, :destroy, :following, :followers]
-  before_action :correct_user,    only: [:edit, :update]
-  before_action :admin_user,      only: :destroy
-  before_action :signed_in_limit, only: [:new, :create]
+  before_action :signed_in_user,    only: [:index, :edit,
+                                           :update, :destroy,
+                                           :following, :followers]
+  before_action :already_signed_in, only: [:new, :create]
+  before_action :correct_user,      only: [:edit, :update]
+  before_action :admin_user,        only: :destroy
 
   def show
     @user = User.find(params[:id])
@@ -86,7 +87,7 @@ class UsersController < ApplicationController
     redirect_to root_path unless current_user.admin?
   end
 
-  def signed_in_limit
-    redirect_to root_path, notice: "Madness" if signed_in?
+  def already_signed_in
+    redirect_to root_path, notice: "Already signed in." if signed_in?
   end
 end
